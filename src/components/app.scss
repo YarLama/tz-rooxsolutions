@@ -1,0 +1,16 @@
+@import '../styles/variables';
+
+.app {
+    display: flex;
+}
+
+.sort_block {
+    min-width: 150px;
+    background-color: $backgroundColor1;
+    flex-grow: 1;
+}
+
+.content_block {
+    flex-grow: 20;
+    background-color: $backgroundColor2;
+}

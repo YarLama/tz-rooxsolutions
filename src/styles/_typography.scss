@@ -1,0 +1,18 @@
+@import './variables';
+
+h1,h2,p {
+    margin: 0;
+}
+
+h1 {
+    font-weight: $fontWeightForH1;
+    font-size: $fontSizeForH1;
+    line-height: $fontLineHeightForH1;
+}
+
+h2, p {
+    font-weight: $fontWeight;
+    font-size: $fontSize;
+    font-style: $fontStyle;
+    line-height: $fontLineHeight;
+}

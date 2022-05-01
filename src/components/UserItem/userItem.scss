@@ -1,0 +1,49 @@
+@import '../../styles/variables';
+
+.user_item_block {
+    background-color: $backgroundColor3;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 3px 10px 3px 10px;
+    min-width: 350px;
+    width: 420px;
+    display: flex;
+    flex-direction: row;
+}
+
+.user_item_main_info {
+    flex-grow: 5;
+
+    p {
+        margin: 7px 0px 7px 0px;
+    }
+}
+
+.user_item_more_info {
+    text-align: end;
+    display: flex;
+    align-items: flex-end;
+    margin-left: auto;
+    flex-grow: 1;
+    
+    p {
+        width: 100%;
+        margin-bottom: 7px;
+        color: $backgroundColor4;
+        text-align: right;
+        cursor: pointer;
+    }
+}
+
+.user_item_field_name {
+    color: $fontColor4;
+    font-size: 11px;
+    line-height: 13px;
+    padding-right: 7px;
+}
+
+.user_item_field_value {
+    font-size: 11px;
+    line-height: 13px;
+    color: $fontColor1;
+}
