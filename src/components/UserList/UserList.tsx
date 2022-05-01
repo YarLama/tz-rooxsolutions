@@ -25,7 +25,7 @@ const UserList: React.FC<UserListProps> = ({
                 <UserItem key={user.id} user={user}/>
             )}
             {isShowHowManyFound 
-                ? <h2 className={cl.user_list_found}>Найдейно {users.length} пользователей</h2>
+                ? <h2 className={cl.user_list_found}>Найдено {users.length} пользователей</h2>
                 : null
             }
         </div>
