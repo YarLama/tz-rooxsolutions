@@ -3,24 +3,11 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import '../styles/_global.scss'
 import '../styles/_typography.scss'
 import cl from './app.scss'
-import UserService from '../API/UserService'
-import { IUser } from '../types/types';
-import UserList from './UserList/UserList';
 import SortList from './SortList/SortList';
+import UserPage from '../pages/UsersPage/UserPage';
 
 
-const App = () => {
-
-    const [users, setUsers] = useState<IUser[]>([])
-
-    useEffect(() => {
-        fetchUsers()
-    }, [])
-
-    async function fetchUsers() {
-        const users = await UserService.getAll();
-        setUsers(users)
-    }
+const App: React.FC = () => {
 
     return (
         <div className={cl.app}>
@@ -28,7 +15,7 @@ const App = () => {
                 <SortList />
             </div>
             <div className={cl.content_block}>
-                <UserList users={users} />
+                <UserPage />
             </div>
             
         </div>

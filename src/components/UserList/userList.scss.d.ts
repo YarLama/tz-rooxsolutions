@@ -3,7 +3,6 @@
 interface CssExports {
   'user_list_block': string;
   'user_list_found': string;
-  'user_list_label': string;
 }
 export const cssExports: CssExports;
 export default cssExports;

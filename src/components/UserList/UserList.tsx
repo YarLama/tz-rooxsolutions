@@ -6,21 +6,15 @@ import cl from './userList.scss'
 interface UserListProps {
     users: IUser[];
     isShowHowManyFound?: boolean;
-    isShowUserListLabel?: boolean;
 }
 
 const UserList: React.FC<UserListProps> = ({ 
     users, 
     isShowHowManyFound = true,
-    isShowUserListLabel = true,
 }) => {
     
     return (
         <div className={cl.user_list_block}>
-            {isShowUserListLabel
-                ? <h1 className={cl.user_list_label}>Список пользователей</h1>
-                : null
-            }
             {users.map(user => 
                 <UserItem key={user.id} user={user}/>
             )}
