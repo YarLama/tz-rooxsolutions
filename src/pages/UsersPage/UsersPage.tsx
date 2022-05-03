@@ -3,7 +3,7 @@ import { IUser } from '../../types/types';
 import UserService from '../../API/UserService';
 import UserList from '../../components/UserList/UserList';
 
-const UserPage: React.FC = () => {
+const UsersPage: React.FC = () => {
     
     const [users, setUsers] = useState<IUser[]>([])
 
@@ -24,4 +24,4 @@ const UserPage: React.FC = () => {
     );
 }
 
-export default UserPage;
+export default UsersPage;

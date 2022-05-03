@@ -4,7 +4,7 @@ import '../styles/_global.scss'
 import '../styles/_typography.scss'
 import cl from './app.scss'
 import SortList from './SortList/SortList';
-import UserPage from '../pages/UsersPage/UserPage';
+import UsersPage from '../pages/UsersPage/UsersPage';
 import UserInfoPage from '../pages/UserInfoPage/UserInfoPage';
 
 
