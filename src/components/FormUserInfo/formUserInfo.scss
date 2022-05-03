@@ -21,7 +21,7 @@
     flex-direction: column;
     border:1px solid #F3F3F3;
     padding: 20px 6px 20px 12px;
-
+    
     label {
         font-size: 8px;
         line-height: 9px;
@@ -40,6 +40,10 @@
         &:disabled {
             opacity: 30%;
         }
+
+        &.error_field {
+            border: 1px solid red;
+        }
     }
 
     textarea {
@@ -57,3 +61,4 @@
         }
     }
 }
+

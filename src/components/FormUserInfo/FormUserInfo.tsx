@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import {IUser} from '../../types/types'
-import { Formik, Form, Field, FormikHelpers, useField, useFormik } from 'formik';
-import cl from './formUserInfo.scss'
+import { FormikHelpers, useFormik, FormikProps } from 'formik';
+import cl from './formUserInfo.scss';
+import FormInputText from '../UI/FormItem/FormInputText/FormInputText';
+import FormInputTextArea from '../UI/FormItem/FormInputTextArea/FormInputTextArea';
 
 interface IFormValues {
     name : string;
@@ -12,6 +14,18 @@ interface IFormValues {
     zip: string;
     phone: string;
     website: string;
+    comment?: string;
+}
+
+interface IFormErrors {
+    name?: string;
+    username?: string;
+    email?: string;
+    street?: string;
+    city?: string;
+    zip?: string;
+    phone?: string;
+    website?: string;
     comment?: string;
 }
 
@@ -45,100 +59,106 @@ const FormUserInfo: React.FC<FormUserInfoProps> = ({
         console.log(values, actions)
     }
 
+    const validateData = (values: IFormValues) => {
+        const errors : IFormErrors = {};
+        if (!values.name) errors.name = 'name field is required';
+        if (!values.username) errors.username = 'username field is required';
+        if (!values.email) errors.email = 'email field is required';
+        if (!values.street) errors.street = 'street field is required';
+        if (!values.city) errors.city = 'city field is required';
+        if (!values.zip) errors.zip = 'zip field is required';
+        if (!values.phone) errors.phone = 'phone field is required';
+        if (!values.website) errors.website = 'website field is required';
+        return errors;
+    }
+
     const formik = useFormik({
         initialValues: initialValues,
-        onSubmit : submitData
+        validate: validateData,
+        onSubmit: submitData,
     })
-    
+
     return (
-        <form onSubmit={formik.handleSubmit} className={cl.user_form}>
+        <form onSubmit={formik.handleSubmit} className={cl.user_form} autoComplete="off">
                 <div className={cl.user_form_fields}>
-                    <label htmlFor="name">Name</label>
-                    <input
-                    type="text"
-                    name="name" 
-                    placeholder="name" 
-                    value={formik.values.name}
-                    onChange={formik.handleChange}
-                    disabled = {readonly}
+                    <FormInputText 
+                        name="name" 
+                        label="Name"
+                        errorExpression={formik.errors.name ? true : false}
+                        value={formik.values.name}
+                        handleChange={formik.handleChange}
+                        readonly={readonly}
+                        errorClassName={cl.error_field}
                     />
-
-                    <label htmlFor="username">User name</label>
-                    <input
-                    type="text"
-                    name="username" 
-                    placeholder="username" 
-                    value={formik.values.username}
-                    onChange={formik.handleChange}
-                    disabled = {readonly}
+                    <FormInputText 
+                        name="username" 
+                        label="User name"
+                        errorExpression={formik.errors.username ? true : false}
+                        value={formik.values.username}
+                        handleChange={formik.handleChange}
+                        readonly={readonly}
+                        errorClassName={cl.error_field}
                     />
-
-                    <label htmlFor="email">E-mail</label>
-                    <input
-                    type="text"
-                    name="email" 
-                    placeholder="email" 
-                    value={formik.values.email}
-                    onChange={formik.handleChange}
-                    disabled = {readonly}
+                    <FormInputText 
+                        name="email" 
+                        label="E-mail"
+                        errorExpression={formik.errors.email ? true : false}
+                        value={formik.values.email}
+                        handleChange={formik.handleChange}
+                        readonly={readonly}
+                        errorClassName={cl.error_field}
                     />
-
-                    <label htmlFor="street">Street</label>
-                    <input
-                    type="text"
-                    name="street" 
-                    placeholder="street" 
-                    value={formik.values.street}
-                    onChange={formik.handleChange}
-                    disabled = {readonly}
+                    <FormInputText 
+                        name="street" 
+                        label="Street"
+                        errorExpression={formik.errors.street ? true : false}
+                        value={formik.values.street}
+                        handleChange={formik.handleChange}
+                        readonly={readonly}
+                        errorClassName={cl.error_field}
                     />
-
-                    <label htmlFor="city">City</label>
-                    <input
-                    type="text"
-                    name="city" 
-                    placeholder="city" 
-                    value={formik.values.city}
-                    onChange={formik.handleChange}
-                    disabled = {readonly}
+                    <FormInputText 
+                        name="city" 
+                        label="City"
+                        errorExpression={formik.errors.city ? true : false}
+                        value={formik.values.city}
+                        handleChange={formik.handleChange}
+                        readonly={readonly}
+                        errorClassName={cl.error_field}
                     />
-
-                    <label htmlFor="zip">Zip code</label>
-                    <input
-                    type="text" 
-                    name="zip" 
-                    placeholder="zip" 
-                    value={formik.values.zip}
-                    onChange={formik.handleChange}
-                    disabled = {readonly}
+                    <FormInputText 
+                        name="zip" 
+                        label="Zip code"
+                        errorExpression={formik.errors.zip ? true : false}
+                        value={formik.values.zip}
+                        handleChange={formik.handleChange}
+                        readonly={readonly}
+                        errorClassName={cl.error_field}
                     />
-
-                    <label htmlFor="phone">Phone</label>
-                    <input
-                    type="text" 
-                    name="phone" 
-                    placeholder="phone" 
-                    value={formik.values.phone}
-                    onChange={formik.handleChange}
-                    disabled = {readonly}
+                    <FormInputText 
+                        name="phone" 
+                        label="Phone"
+                        errorExpression={formik.errors.phone ? true : false}
+                        value={formik.values.phone}
+                        handleChange={formik.handleChange}
+                        readonly={readonly}
+                        errorClassName={cl.error_field}
                     />
-
-                    <label htmlFor="website">Website</label>
-                    <input
-                    type="text" 
-                    name="website" 
-                    placeholder="website" 
-                    value={formik.values.website}
-                    onChange={formik.handleChange}
-                    disabled = {readonly}
+                    <FormInputText 
+                        name="website" 
+                        label="Website"
+                        errorExpression={formik.errors.website ? true : false}
+                        value={formik.values.website}
+                        handleChange={formik.handleChange}
+                        readonly={readonly}
+                        errorClassName={cl.error_field}
                     />
-                    
-                    <label htmlFor="comment">Comment</label>
-                    <textarea 
-                        name="comment"
+                    <FormInputTextArea 
+                        name="comment" 
+                        label="Comment"
                         value={formik.values.comment}
-                        onChange={formik.handleChange}
-                        disabled = {readonly}
+                        handleChange={formik.handleChange}
+                        readonly={readonly}
                     />
                 </div>
                 <div className={cl.user_form_tooltip}>
