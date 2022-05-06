@@ -1,9 +1,9 @@
 import React from 'react';
-import {IUser} from '../../types/types'
+import {IUserItem} from '../../types/types'
 import cl from './userItem.scss'
 
 interface UserItemProps {
-    user: IUser,
+    user: IUserItem,
     isShowMoreInfo?: boolean;
 
 }
@@ -18,16 +18,17 @@ const UserItem: React.FC<UserItemProps> = ({
         <div className={cl.user_item_block}>
             <div className={cl.user_item_main_info}>
                 <p>
+                    <span className={cl.user_item_field_name}>{user?.id}</span> 
                     <span className={cl.user_item_field_name}>ФИО:</span> 
                     <span className={cl.user_item_field_value}>{user?.name}</span>
                 </p>
                 <p>
                     <span className={cl.user_item_field_name}>город:</span> 
-                    <span className={cl.user_item_field_value}>{user?.address?.city}</span>
+                    <span className={cl.user_item_field_value}>{user?.city}</span>
                 </p>
                 <p>
                     <span className={cl.user_item_field_name}>компания:</span> 
-                    <span className={cl.user_item_field_value}>{user?.company?.name}</span>
+                    <span className={cl.user_item_field_value}>{user?.company}</span>
                 </p>
             </div>
             {isShowMoreInfo 

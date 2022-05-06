@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { IUser } from '../../types/types';
+import { IAddress, IGeo, IUser } from '../../types/types';
 import UserService from '../../API/UserService';
 import UserList from '../../components/UserList/UserList';
 
-const UsersPage: React.FC = () => {
+interface UserPageProps {
+    sortBy?: string;
+}
+
+const UsersPage: React.FC<UserPageProps> = ({
+    sortBy
+}) => {
     
     const [users, setUsers] = useState<IUser[]>([])
 
     useEffect(() => {
         fetchUsers()
     }, [])
+
 
     async function fetchUsers() {
         const users = await UserService.getAll();
@@ -19,7 +26,7 @@ const UsersPage: React.FC = () => {
     return (
         <div>
             <h1>Список пользователей</h1>
-            <UserList users={users}/>
+            <UserList users={users} sortBy={sortBy}/>
         </div>
     );
 }

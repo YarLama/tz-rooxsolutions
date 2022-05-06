@@ -10,6 +10,8 @@ import UserInfoPage from '../pages/UserInfoPage/UserInfoPage';
 
 const App: React.FC = () => {
 
+    const [selectedSort, setSelectedSort] = useState<string>("id");
+
     const user = {
         "id": 1,
         "name": "Leanne Graham",
@@ -34,14 +36,31 @@ const App: React.FC = () => {
         }
       }
 
+    const options = [
+      {
+        groupName: "group1",
+        value: "city",
+        label: "По городу"
+      },
+      {
+        groupName: "group1",
+        value: "company",
+        label: "По компании"
+      },
+    ]
+
+    const sortUsers = (selectedSort : string) => {
+        setSelectedSort(selectedSort);
+    }
+
     return (
         <div className={cl.app}>
             <div className={cl.sort_block}>
-                <SortList />
+                <SortList options={options} selectedValue={sortUsers}/>
             </div>
             <div className={cl.content_block}>
-                {/* <UserPage /> */}
-                <UserInfoPage user={user}/>
+                <UsersPage sortBy={selectedSort}/>
+                {/* <UserInfoPage user={user}/> */}
             </div>
             
         </div>

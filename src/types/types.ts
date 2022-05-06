@@ -28,3 +28,9 @@ export interface IUser {
     company: ICompany,
 }
 
+export interface IUserItem {
+    id: number,
+    name: string,
+    city: string,
+    company: string,
+}
