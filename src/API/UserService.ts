@@ -12,14 +12,14 @@ export default class UserService {
         }
     }  
     
-    static async getUser(id : number) {
+    static async getUser(id : number | string){
         try {
-            const responce = await axios.get<IUser[]>('https://jsonplaceholder.typicode.com/users', {
+            const responce = await axios.get<IUser | any>('https://jsonplaceholder.typicode.com/users', {
                 params: {
                     id: id
                 }
             })
-            return responce.data;
+            return responce.data[0];
         } catch (e) {
             throw Error(`UserService error in getUser(${id})`)
         }

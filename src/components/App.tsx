@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import '../styles/_global.scss'
 import '../styles/_typography.scss'
 import cl from './app.scss'
@@ -11,30 +11,6 @@ import UserInfoPage from '../pages/UserInfoPage/UserInfoPage';
 const App: React.FC = () => {
 
     const [selectedSort, setSelectedSort] = useState<string>("id");
-
-    const user = {
-        "id": 1,
-        "name": "Leanne Graham",
-        "username": "Bret",
-        "email": "Sincere@april.biz",
-        "address": {
-          "street": "Kulas Light",
-          "suite": "Apt. 556",
-          "city": "Gwenborough",
-          "zipcode": "92998-3874",
-          "geo": {
-            "lat": "-37.3159",
-            "lng": "81.1496"
-          }
-        },
-        "phone": "1-770-736-8031 x56442",
-        "website": "hildegard.org",
-        "company": {
-          "name": "Romaguera-Crona",
-          "catchPhrase": "Multi-layered client-server neural-net",
-          "bs": "harness real-time e-markets"
-        }
-      }
 
     const options = [
       {
@@ -54,16 +30,22 @@ const App: React.FC = () => {
     }
 
     return (
-        <div className={cl.app}>
-            <div className={cl.sort_block}>
-                <SortList options={options} selectedValue={sortUsers}/>
+        <BrowserRouter>
+            <div className={cl.app}>
+                <div className={cl.sort_block}>
+                    <SortList options={options} selectedValue={sortUsers}/>
+                </div>
+                <div className={cl.content_block}>
+                    <Routes>
+                        <Route path='/users' element={<UsersPage sortBy={selectedSort}/>} /> 
+                        <Route path='/users/:id' element={<UserInfoPage/>} />
+                        <Route path='/' element={
+                            <Navigate replace to='/users' />
+                        }/>  
+                    </Routes>
+                </div>  
             </div>
-            <div className={cl.content_block}>
-                <UsersPage sortBy={selectedSort}/>
-                {/* <UserInfoPage user={user}/> */}
-            </div>
-            
-        </div>
+        </BrowserRouter>
     );
 };
 

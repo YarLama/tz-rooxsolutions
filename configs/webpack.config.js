@@ -10,8 +10,9 @@ const PATHS = {
 }
 
 const DEV_SERVER = {
-    port: 3022,
-    hot: true
+    historyApiFallback: true,
+    port: 3000,
+    hot: true,
 }
 
 module.exports = {
@@ -20,6 +21,7 @@ module.exports = {
     output: {
         filename: "[name].[fullhash].js",
         path: PATHS.dist,
+        publicPath: '/',
     },
     devServer: DEV_SERVER,
     plugins: [

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {IUserItem} from '../../types/types'
 import cl from './userItem.scss'
 
@@ -18,7 +19,6 @@ const UserItem: React.FC<UserItemProps> = ({
         <div className={cl.user_item_block}>
             <div className={cl.user_item_main_info}>
                 <p>
-                    <span className={cl.user_item_field_name}>{user?.id}</span> 
                     <span className={cl.user_item_field_name}>ФИО:</span> 
                     <span className={cl.user_item_field_value}>{user?.name}</span>
                 </p>
@@ -32,9 +32,11 @@ const UserItem: React.FC<UserItemProps> = ({
                 </p>
             </div>
             {isShowMoreInfo 
-                ?   <div className={cl.user_item_more_info}>
-                        <p>Подробнее</p>
-                    </div>
+                ?   <Link to={`${user.id}`}>
+                        <div className={cl.user_item_more_info}>
+                            <p>Подробнее</p>
+                        </div>
+                    </Link>
                 :   null
             }
             
