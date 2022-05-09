@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { IUser } from '../../types/types';
 import UserService from '../../API/UserService';
 import UserList from '../../components/UserList/UserList';
+import { SortContext } from '../../context';
 
-interface UserPageProps {
-    sortBy?: string;
-}
 
-const UsersPage: React.FC<UserPageProps> = ({
-    sortBy
-}) => {
+const UsersPage: React.FC = ({}) => {
     
     const [users, setUsers] = useState<IUser[]>([])
     const [isLoading, setIsLoading] = useState<boolean>(false)
-
+    const sortBy = useContext(SortContext);
+    
     useEffect(() => {
         fetchUsers()
     }, [])
@@ -30,7 +27,7 @@ const UsersPage: React.FC<UserPageProps> = ({
             <h1>Список пользователей</h1>
             {
             isLoading
-            ? <UserList users={users} sortBy={sortBy}/>
+            ? <UserList users={users} sortBy={sortBy.value}/>
             : <div>Loading...</div>
             }
             

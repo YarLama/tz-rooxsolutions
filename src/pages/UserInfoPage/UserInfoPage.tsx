@@ -19,7 +19,6 @@ const UserInfoPage: React.FC<UserInfoPageProps> = () => {
         fetchUser()
     }, [])
 
-
     async function fetchUser() {
         const responce = await UserService.getUser(params.id);
         setUser(responce)
