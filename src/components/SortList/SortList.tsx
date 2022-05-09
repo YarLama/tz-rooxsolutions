@@ -27,7 +27,7 @@ const SortList: React.FC<SortListProps> = ({
             }
             <div className={cl.sort_list_select_wrapper}>
                 {options.map(option => 
-                    <label key={option.value} className={cl.sort_list_select}>
+                    <label key={`${option.groupName}-${option.value}`} className={cl.sort_list_select}>
                         <input type="radio" name={option.groupName} value={option.value} onChange={(e) => {selectedValue(e.target.value)}}/>
                         {option.label}
                     </label>

@@ -7,6 +7,7 @@ import SortList from './SortList/SortList';
 import UsersPage from '../pages/UsersPage/UsersPage';
 import UserInfoPage from '../pages/UserInfoPage/UserInfoPage';
 import { SortContext } from '../context';
+import AppRouter from './AppRouter/AppRouter';
 
 
 const App: React.FC = () => {
@@ -28,13 +29,7 @@ const App: React.FC = () => {
                         <SortList options={options} selectedValue={sortUsers}/>
                     </div>
                     <div className={cl.content_block}>
-                        <Routes>
-                            <Route path='/users' element={<UsersPage/>} /> 
-                            <Route path='/users/:id' element={<UserInfoPage/>} />
-                            <Route path='/' element={
-                                <Navigate replace to='/users' />
-                            }/>  
-                        </Routes>
+                        <AppRouter />
                     </div>  
                 </div>
             </BrowserRouter>
