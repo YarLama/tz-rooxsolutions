@@ -14,7 +14,6 @@ const UserInfoPage: React.FC<UserInfoPageProps> = () => {
     const [isReadonly, setReadOnly] = useState<boolean>(true)
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [user, setUser] = useState<IUser>(undefined)
-
     const params = useParams();
     useEffect(() => {
         fetchUser()
