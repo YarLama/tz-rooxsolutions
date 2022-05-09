@@ -32,11 +32,13 @@ const UserItem: React.FC<UserItemProps> = ({
                 </p>
             </div>
             {isShowMoreInfo 
-                ?   <Link to={`${user.id}`}>
+                ?   
                         <div className={cl.user_item_more_info}>
-                            <p>Подробнее</p>
+                            <Link to={`${user.id}`}>
+                                <p>Подробнее</p>
+                            </Link>
                         </div>
-                    </Link>
+                    
                 :   null
             }
             

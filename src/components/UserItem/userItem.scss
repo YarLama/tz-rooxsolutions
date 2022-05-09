@@ -26,12 +26,16 @@
     margin-left: auto;
     flex-grow: 1;
     
-    p {
+    p, a{
         width: 100%;
         margin-bottom: 7px;
         color: $backgroundColor4;
         text-align: right;
         cursor: pointer;
+    }
+
+    a {
+        text-decoration: none;
     }
 }
 
